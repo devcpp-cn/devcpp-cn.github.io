@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dev-C++ 功能说明：编辑器、编译、调试、工程管理</title>
+<meta name="description" content="Dev-C++ 各模块功能说明：语法高亮、函数列表、代码模板、一键编译、GDB 断点调试、工程模板、中文界面和快捷键配置，以及它做不到的事。">
+
+<meta name="theme-color" content="#1f6feb">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dev-C++ 中文站">
+<meta property="og:title" content="Dev-C++ 功能说明：编辑器、编译、调试、工程管理">
+<meta property="og:description" content="Dev-C++ 各模块功能说明：语法高亮、函数列表、代码模板、一键编译、GDB 断点调试、工程模板、中文界面和快捷键配置，以及它做不到的事。">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add("js");</script>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+	<div class="wrap topbar__inner">
+		<a class="brand" href="index.html"><img src="assets/logo.svg" alt="Dev-C++">Dev-C++ <span>中文站</span></a>
+		<nav class="nav" aria-label="主导航">
+			<a href="index.html">首页</a>
+			<a href="download.html">下载安装</a>
+			<a class="is-active" href="features.html">功能说明</a>
+			<a href="tutorial.html">使用教程</a>
+			<a href="faq.html">常见问题</a>
+		</nav>
+		<div class="topbar__right">
+			<a class="btn btn--pri btn--sm" href="download.html">免费下载</a>
+			<button type="button" class="burger" aria-label="打开菜单" aria-expanded="false"><span></span></button>
+		</div>
+	</div>
+</header>
+<nav class="mobnav" aria-label="移动端导航">
+	<a href="index.html">首页</a>
+	<a href="download.html">下载安装</a>
+	<a href="features.html">功能说明</a>
+	<a href="tutorial.html">使用教程</a>
+	<a href="faq.html">常见问题</a>
+	<a class="btn btn--pri" href="download.html">免费下载</a>
+</nav>
+
+<section class="pagehead">
+	<div class="wrap">
+		<div class="crumb"><a href="index.html">首页</a> / 功能说明</div>
+		<h1>Dev-C++ 能做什么</h1>
+		<p class="lead">按模块拆开讲，包括它做得好的和做不到的。看完再决定要不要用它。</p>
+	</div>
+</section>
+
+<section class="sec sec--top">
+	<div class="wrap doc">
+		<aside class="toc">
+			<h4>本页目录</h4>
+			<a href="#editor">代码编辑器</a>
+			<a href="#build">编译与构建</a>
+			<a href="#debug">调试功能</a>
+			<a href="#project">工程管理</a>
+			<a href="#ui">界面与个性化</a>
+			<a href="#limits">做不到的事</a>
+			<a href="#compare">与其它 IDE 的差别</a>
+		</aside>
+
+		<div class="doc__body">
+			<section id="editor">
+				<h2>代码编辑器</h2>
+				<p>写代码的窗口，Dev-C++ 在这一块提供的是“够用”级别的功能，没有智能补全那种花活。</p>
+
+				<h3>C/C++ 语法高亮</h3>
+				<p>关键字、字符串、注释、数字、预处理指令分色显示。配色可以换，也能自己改每一项的颜色和字体。</p>
+
+				<h3>函数列表与类浏览</h3>
+				<p>左侧的“类浏览”面板会列出当前文件里的函数、结构体、类成员。点一下就跳到对应位置，几百行的代码不用手动滚。</p>
+
+				<h3>代码补全</h3>
+				<p>基础的关键字和已输入单词补全，按 <span class="kbd">Ctrl</span> + <span class="kbd">Space</span> 触发。它不会分析头文件给出成员函数提示，这一点比不上 Visual Studio 和 CLion。</p>
+
+				<h3>代码模板</h3>
+				<p>内置常用片段，比如 main 函数骨架、for 循环、头文件保护宏。输入缩写后触发，省去重复敲模板代码。</p>
+
+				<h3>其它编辑功能</h3>
+				<ul>
+					<li>多标签页，可以同时打开多个源文件</li>
+					<li>括号匹配、自动缩进、行号显示</li>
+					<li>查找替换支持正则，可跨文件搜索</li>
+					<li>书签标记，长文件里快速跳转</li>
+					<li>AStyle 一键格式化，统一缩进和空格</li>
+					<li>撤销栈较深，误删能逐步退回</li>
+				</ul>
+			</section>
+
+			<section id="build">
+				<h2>编译与构建</h2>
+				<p>Dev-C++ 调用自带的 TDM-GCC 完成编译和链接，把两步合成一个“编译”动作，生成的 exe 直接在源文件旁边。</p>
+
+				<h3>三种运行方式</h3>
+				<ul>
+					<li><b>编译（F9）</b>：只生成 exe，不运行。看编译是否通过时用。</li>
+					<li><b>运行（F10）</b>：运行上次编译好的 exe。</li>
+					<li><b>编译运行（F11）</b>：编译、链接、运行一次完成。日常最常用。</li>
+				</ul>
+
+				<h3>编译日志</h3>
+				<p>下方“编译日志”窗口显示完整命令、警告和错误。双击错误行能跳到对应代码位置。5.11 的部分提示已汉化，剩下的是 GCC 原始英文输出。</p>
+
+				<h3>编译选项</h3>
+				<p>在“工具 → 编译选项”里可以加参数，常用的有：</p>
+				<div class="table-wrap">
+					<table>
+						<tbody><tr><th scope="col">参数</th><th scope="col">作用</th></tr>
+							<tr><td><code>-std=c++11</code></td><td>按 C++11 标准编译</td></tr>
+							<tr><td><code>-std=c++17</code></td><td>按 C++17 标准编译（需 GCC 9.2，即 6.3 版）</td></tr>
+							<tr><td><code>-O2</code></td><td>开启优化，程序跑得更快，调试时别加</td></tr>
+							<tr><td><code>-Wall</code></td><td>显示所有常见警告，建议一直开着</td></tr>
+							<tr><td><code>-g</code></td><td>生成调试信息，用 GDB 调试时需要</td></tr>
+						</tbody>
+					</table>
+				</div>
+
+				<h3>并行编译（仅 6.3）</h3>
+				<p>6.3 默认开启 MAKE Jobs，多文件工程可以同时编译多个文件，核多的电脑能明显缩短构建时间。5.11 只能一个一个编。</p>
+			</section>
+
+			<section id="debug">
+				<h2>调试功能</h2>
+				<p>内置 GDB，能设断点、单步走、看变量。功能不算强，但定位数组越界、循环写错、变量没赋值这类问题足够。</p>
+
+				<h3>基本流程</h3>
+				<ol>
+					<li>在行号左侧点一下，出现红色标记，断点设好了</li>
+					<li>按 <span class="kbd">F5</span> 或菜单“调试 → 调试”，程序运行到断点处暂停</li>
+					<li>在“调试”面板看局部变量、监视表达式和调用栈</li>
+					<li>用“下一步”“单步进入”逐行执行，观察变量变化</li>
+					<li>调试结束后点“结束调试”，或按 <span class="kbd">Ctrl</span> + <span class="kbd">Alt</span> + <span class="kbd">F2</span></li>
+				</ol>
+
+				<h3>能看的调试信息</h3>
+				<ul>
+					<li>断点：普通断点、条件断点</li>
+					<li>变量：局部变量自动列出，也可手动添加监视</li>
+					<li>调用栈：看清函数是怎么一层层调进来的</li>
+					<li>CPU 窗口：寄存器、反汇编、内存查看</li>
+				</ul>
+				<div class="note mt-8">
+					<svg class="ic" viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+					<div>调试前确认编译选项里有 <code class="inline-code">-g</code>，否则断点可能不生效。Release 优化模式（-O2）下变量值可能被优化掉，调试时用默认设置。</div>
+				</div>
+			</section>
+
+			<section id="project">
+				<h2>工程管理</h2>
+				<p>单个源文件不用建工程，直接编译。多个文件互相调用时才需要建工程，把文件加进同一个项目里统一编译。</p>
+
+				<h3>新建工程时的模板</h3>
+				<ul>
+					<li><b>Console Application</b>：控制台程序，学语法和刷题用这个</li>
+					<li><b>Windows Application</b>：带窗口的 GUI 程序</li>
+					<li><b>Static Library</b>：静态库 .a / .lib</li>
+					<li><b>DLL</b>：动态链接库</li>
+					<li><b>Empty Project</b>：空工程，自己往里加文件</li>
+				</ul>
+
+				<h3>工程里能做的事</h3>
+				<ul>
+					<li>添加、移除源文件和头文件</li>
+					<li>设置单个文件的编译选项</li>
+					<li>配置包含目录、库目录和链接库</li>
+					<li>一键重新编译整个工程</li>
+					<li>工程文件为 .dev，换电脑拷贝整个文件夹即可</li>
+				</ul>
+				<p>它不原生支持 CMake，也不能像 Visual Studio 那样管理解决方案。工程规模超过几十个文件，维护成本会明显上升。</p>
+			</section>
+
+			<section id="ui">
+				<h2>界面与个性化</h2>
+				<h3>中文界面</h3>
+				<p>安装完首次启动时选“简体中文”，菜单和对话框就全是中文。错过了也没关系，在“工具 → 环境选项 → 界面”里可以重新选语言。</p>
+
+				<h3>可调的项目</h3>
+				<ul>
+					<li>编辑器字体、字号、行距</li>
+					<li>语法高亮的每一项颜色</li>
+					<li>工具栏显示哪些按钮</li>
+					<li>快捷键绑定</li>
+					<li>6.3 提供暗色主题，5.11 只有浅色</li>
+				</ul>
+
+				<h3>常用快捷键</h3>
+				<div class="table-wrap">
+					<table>
+						<tbody><tr><th scope="col">操作</th><th scope="col">快捷键</th></tr>
+							<tr><td>新建源文件</td><td><span class="kbd">Ctrl</span> + <span class="kbd">N</span></td></tr>
+							<tr><td>打开文件</td><td><span class="kbd">Ctrl</span> + <span class="kbd">O</span></td></tr>
+							<tr><td>保存</td><td><span class="kbd">Ctrl</span> + <span class="kbd">S</span></td></tr>
+							<tr><td>查找</td><td><span class="kbd">Ctrl</span> + <span class="kbd">F</span></td></tr>
+							<tr><td>编译</td><td><span class="kbd">F9</span></td></tr>
+							<tr><td>运行</td><td><span class="kbd">F10</span></td></tr>
+							<tr><td>编译并运行</td><td><span class="kbd">F11</span></td></tr>
+							<tr><td>开始调试</td><td><span class="kbd">F5</span></td></tr>
+							<tr><td>代码补全</td><td><span class="kbd">Ctrl</span> + <span class="kbd">Space</span></td></tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<section id="limits">
+				<h2>做不到的事</h2>
+				<p>这些不是配置问题，是它本身的定位决定的。提前知道能省不少时间。</p>
+				<ul>
+					<li><b>只支持 Windows</b>：没有 Linux 和 macOS 版本，跨平台项目别用它。</li>
+					<li><b>不支持 CMake</b>：主流构建系统用不了，只能用它自己的 .dev 工程。</li>
+					<li><b>代码补全弱</b>：没有基于语义的成员提示，大项目写起来费劲。</li>
+					<li><b>没有实时错误检查</b>：要编译之后才知道哪行错了。</li>
+					<li><b>版本停更</b>：5.11 停在 2016 年，6.3 停在 2021 年，新标准和新系统适配有限。</li>
+					<li><b>调试能力一般</b>：多线程调试、内存泄漏检测这些做不了。</li>
+				</ul>
+				<p>如果你的需求超出这些范围，直接用 Visual Studio 社区版（免费）或 CLion 更省事。</p>
+			</section>
+
+			<section id="compare">
+				<h2>与其它 IDE 的差别</h2>
+				<p>只列客观差异，不评好坏。选工具看场景。</p>
+				<div class="table-wrap">
+					<table>
+							<tbody><tr><th scope="col">项目</th><th scope="col">Dev-C++</th><th scope="col">Visual Studio</th><th scope="col">Code::Blocks</th><th scope="col">VS Code</th></tr>
+							<tr><td>安装包大小</td><td>48 – 71 MB</td><td>数 GB</td><td>约 100 MB</td><td>约 100 MB（需另装编译器）</td></tr>
+							<tr><td>是否自带编译器</td><td>是</td><td>是</td><td>是</td><td>否</td></tr>
+							<tr><td>支持系统</td><td>仅 Windows</td><td>Windows / macOS</td><td>Windows / Linux / macOS</td><td>三平台</td></tr>
+							<tr><td>代码补全</td><td>基础</td><td>强</td><td>基础</td><td>强（靠插件）</td></tr>
+							<tr><td>上手难度</td><td>低</td><td>中</td><td>低</td><td>中</td></tr>
+							<tr><td>适合项目规模</td><td>小</td><td>中到大</td><td>中小</td><td>中到大</td></tr>
+						</tbody>
+					</table>
+				</div>
+				<p class="table-note">VS Code 是编辑器，不是开箱即用的 IDE，要自己装编译器和 C/C++ 插件，配置步骤比 Dev-C++ 多。</p>
+			</section>
+		</div>
+	</div>
+</section>
+
+<section class="sec sec--alt">
+	<div class="wrap">
+		<div class="cta reveal">
+			<h2>看完觉得合适，就去装一个</h2>
+			<p>安装包自带编译器和调试器，不需要额外配置。</p>
+			<div class="hero__actions actions--flush">
+				<a class="btn btn--dark btn--lg" href="download.html">下载 Dev-C++</a>
+				<a class="btn btn--ghost btn--lg" href="tutorial.html">看使用教程</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer class="footer">
+	<div class="wrap">
+		<div class="footer__grid">
+			<div>
+				<div class="footer__brand"><img src="assets/logo.svg" alt="">Dev-C++ 中文站</div>
+				<p class="footer__desc">整理 Dev-C++ 的下载地址、安装步骤和使用方法。内容以官方文档和实际安装结果为准，不吹不黑。</p>
+			</div>
+			<div>
+				<h4>页面导航</h4>
+				<ul>
+					<li><a href="index.html">首页</a></li>
+					<li><a href="download.html">下载安装</a></li>
+					<li><a href="features.html">功能说明</a></li>
+					<li><a href="tutorial.html">使用教程</a></li>
+					<li><a href="faq.html">常见问题</a></li>
+				</ul>
+			</div>
+			<div>
+				<h4>软件信息</h4>
+				<ul>
+					<li><span>版本：5.11 / 6.3</span></li>
+					<li><span>体积：48.1MB / 70.7MB</span></li>
+					<li><span>系统：Windows</span></li>
+					<li><span>语言：简体中文</span></li>
+					<li><span>协议：GPL v2</span></li>
+				</ul>
+			</div>
+			<div>
+				<h4>相关页面</h4>
+				<ul>
+					<li><a href="tutorial.html#first-program">第一个程序</a></li>
+					<li><a href="tutorial.html#debug">断点调试</a></li>
+					<li><a href="tutorial.html#cpp11">开启 C++11</a></li>
+					<li><a href="faq.html#install">安装问题</a></li>
+					<li><a href="faq.html#compile">编译报错</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer__bottom">
+			<span>© 2026 Dev-C++ 中文站 · 最后更新：2026-11-11</span>
+			<span>本站为学习与下载指引站点，与 Dev-C++ 开发团队无隶属关系。Dev-C++ 名称归其各自权利人所有。</span>
+		</div>
+	</div>
+</footer>
+
+<button type="button" class="to-top" aria-label="返回顶部">
+	<svg class="ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

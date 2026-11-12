@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dev-C++ 常见问题：安装失败、闪退、中文乱码、编译报错</title>
+<meta name="description" content="Dev-C++ 常见问题汇总：安装报错、程序一闪而过、中文乱码、C++11 不生效、undefined reference、Permission denied 等问题的原因和解决办法。">
+
+<meta name="theme-color" content="#1f6feb">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dev-C++ 中文站">
+<meta property="og:title" content="Dev-C++ 常见问题：安装失败、闪退、中文乱码、编译报错">
+<meta property="og:description" content="Dev-C++ 常见问题汇总：安装报错、程序一闪而过、中文乱码、C++11 不生效、undefined reference、Permission denied 等问题的原因和解决办法。">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add("js");</script>
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Dev-C++ 完全免费吗？可以商用吗？",
+      "acceptedAnswer": { "@type": "Answer", "text": "免费。Dev-C++ 基于 GPL v2 协议发布，个人学习、教学和商业开发都不收费，也不需要注册码。" }
+    },
+    {
+      "@type": "Question",
+      "name": "Dev-C++ 5.11 和 6.3 装哪个？",
+      "acceptedAnswer": { "@type": "Answer", "text": "考试、竞赛、课堂指定版本就按指定版本装，一般是 5.11。自己练习想用 C++17 或暗色主题，装 6.3。两个版本可以同时安装。" }
+    },
+    {
+      "@type": "Question",
+      "name": "为什么程序窗口一闪就没了？",
+      "acceptedAnswer": { "@type": "Answer", "text": "程序执行完就退出，窗口自然关闭。按 F11 编译运行不会闪退。直接双击 exe 时，可以在 return 0 前加 system(\"pause\"); 并包含 stdlib.h。" }
+    },
+    {
+      "@type": "Question",
+      "name": "编译时报 No such file or directory 怎么办？",
+      "acceptedAnswer": { "@type": "Answer", "text": "多数是路径问题。源文件放在中文名或带空格的目录里，编译器找不到。把文件移到 D:\\code 这类纯英文路径再编译。" }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="topbar">
+	<div class="wrap topbar__inner">
+		<a class="brand" href="index.html"><img src="assets/logo.svg" alt="Dev-C++">Dev-C++ <span>中文站</span></a>
+		<nav class="nav" aria-label="主导航">
+			<a href="index.html">首页</a>
+			<a href="download.html">下载安装</a>
+			<a href="features.html">功能说明</a>
+			<a href="tutorial.html">使用教程</a>
+			<a class="is-active" href="faq.html">常见问题</a>
+		</nav>
+		<div class="topbar__right">
+			<a class="btn btn--pri btn--sm" href="download.html">免费下载</a>
+			<button type="button" class="burger" aria-label="打开菜单" aria-expanded="false"><span></span></button>
+		</div>
+	</div>
+</header>
+<nav class="mobnav" aria-label="移动端导航">
+	<a href="index.html">首页</a>
+	<a href="download.html">下载安装</a>
+	<a href="features.html">功能说明</a>
+	<a href="tutorial.html">使用教程</a>
+	<a href="faq.html">常见问题</a>
+	<a class="btn btn--pri" href="download.html">免费下载</a>
+</nav>
+
+<section class="pagehead">
+	<div class="wrap">
+		<div class="crumb"><a href="index.html">首页</a> / 常见问题</div>
+		<h1>Dev-C++ 常见问题</h1>
+		<p class="lead">安装、使用、编译报错三大类，共 20 个问题。按现象找对应条目。</p>
+	</div>
+</section>
+
+<!-- 安装 -->
+<section class="sec sec--top" id="install">
+	<div class="wrap">
+		<div class="sec-head reveal">
+			<span class="eyebrow">安装与版本</span>
+			<h2 class="h2">安装相关</h2>
+		</div>
+		<div class="faq reveal">
+			<div class="faq__item" data-open="1">
+				<button type="button" class="faq__q" aria-expanded="true">Dev-C++ 完全免费吗？可以商用吗？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div><p>免费。Dev-C++ 基于 GPL v2 协议发布，个人学习、教学和商业开发都不收费，也不需要注册码。</p><p>GPL 允许你使用、修改和分发软件。修改后再分发时，需要同样以 GPL 协议开放源码。</p></div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">5.11 和 6.3 装哪个？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div><p>考试、竞赛、课堂指定了版本就按指定的装，一般是 5.11。自己练习、想用 C++17 或暗色主题，装 6.3。</p><p>两个版本可以同时装在一台电脑上，装在不同目录即可，互不冲突。</p></div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">安装程序为什么没有中文？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>安装程序只有英文界面，这是正常的。简体中文要在安装完成后，首次启动时选择，或在“工具 → 环境选项”的 Language 里改。</div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">安装时被杀毒软件拦截怎么办？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div><p>先核对文件来源和文件名。本文提供的两个地址分别来自 SourceForge 和 GitHub 的官方发布页，文件名应与页面写的一致。</p><p>如果确认来源无误仍被拦截，可把安装包加入杀毒软件的白名单后再安装。来源不明的安装包不要放行。</p></div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">Windows 11 能用吗？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>能。5.11 和 6.3 在 Windows 11 上都能正常安装和编译，右键以管理员身份运行安装包可以减少权限问题。</div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">安装路径可以带中文吗？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>不建议。安装程序可能不报错，但编译器调用路径时容易失败。统一用纯英文、无空格的路径，例如 <code class="inline-code">D:\Dev-Cpp</code>。</div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">装完发现装错盘了，能直接剪切文件夹吗？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>不建议。安装过程会写注册表和文件关联，直接移动目录会导致快捷方式和卸载项失效。卸载后重装到目标目录更稳妥。</div></div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 使用 -->
+<section class="sec sec--alt" id="use">
+	<div class="wrap">
+		<div class="sec-head reveal">
+			<span class="eyebrow">日常使用</span>
+			<h2 class="h2">使用相关</h2>
+		</div>
+		<div class="faq reveal">
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">怎么新建源文件？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>菜单“文件 → 新建 → 源代码”，或按 <span class="kbd">Ctrl</span> + <span class="kbd">N</span>。要写 C 代码就保存成 .c，写 C++ 就保存成 .cpp。</div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">保存时没写后缀，为什么变成了 .cpp？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>Dev-C++ 默认按 C++ 处理，会自动补 .cpp。想写 C 语言，保存时手动把文件名写成 <code class="inline-code">hello.c</code>，并在保存类型里选 C source files。</div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">为什么程序窗口一闪就没了？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div><p>程序执行完就退出，窗口自然关闭。用 <span class="kbd">F11</span> 编译运行，Dev-C++ 会自动暂停。</p><p>直接双击 exe 时，在 <code class="inline-code">return 0;</code> 前加 <code class="inline-code">system("pause");</code>，并在开头 <code class="inline-code">#include &lt;stdlib.h&gt;</code>。</p></div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">生成的 exe 文件在哪？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>和源文件在同一个目录里，文件名与源文件相同。比如保存的是 <code class="inline-code">D:\code\hello.cpp</code>，exe 就是 <code class="inline-code">D:\code\hello.exe</code>。</div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">中文注释显示成方块或乱码<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div><p>两种原因。字体不支持中文，就在“工具 → 编辑器选项 → 显示”里换微软雅黑。文件编码不对，就在“文件 → 另存为”里把编码改成 ANSI（GBK）。</p><p>控制台输出中文乱码，通常是文件存成了 UTF-8 而控制台用 GBK，同样改存 ANSI 即可。</p></div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">怎么把界面改成简体中文？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>菜单“工具 → 环境选项”，在 Language 下拉框里选 Chinese (Simplified)，确定后重启 Dev-C++。</div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">怎么开启 C++11？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>“工具 → 编译选项 → 设置”，在代码生成里勾选 C++11 标准。也可以直接在编译命令里加 <code class="inline-code">-std=c++11</code>。详细步骤见<a href="tutorial.html#cpp11">教程对应章节</a>。</div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">编译出来的程序是 32 位还是 64 位？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>看工具栏上的编译器配置。5.11 同时提供 TDM-GCC 的 32 位和 64 位配置，默认是 64 位。需要发给 32 位系统的电脑用时，切到 32 位配置重新编译。</div></div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 编译 -->
+<section class="sec" id="compile">
+	<div class="wrap">
+		<div class="sec-head reveal">
+			<span class="eyebrow">编译与链接</span>
+			<h2 class="h2">编译报错</h2>
+			<p class="lead">编译日志里通常第一条错误才是根因，后面的往往是连锁反应。先看第一条。</p>
+		</div>
+		<div class="faq reveal">
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">报错信息怎么看？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div><p>下方“编译日志”里，错误行会写明文件名、行号和原因。双击该行能跳到对应代码。</p><p>先解决第一条 error，warning 可以稍后再看。改完重新按 F11，不要只看最后一句 “ld returned 1 exit status”，那只是结果。</p></div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">g++.exe: error: xxx: No such file or directory<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div><p>编译器找不到源文件。常见原因：文件被移动或改名、路径含中文、路径含空格、工程里引用的文件已被删除。</p><p>把源文件放到 <code class="inline-code">D:\code</code> 这类纯英文无空格目录，重新打开再编译。</p></div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">'stoi' / 'to_string' was not declared in this scope<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>这些是 C++11 才有的函数，编译器还在用 C++98 标准。按上一组的方法开启 C++11，或在编译选项里加上 <code class="inline-code">-std=c++11</code>。</div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">undefined reference to `xxx'<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div><p>函数声明了但没找到实现。依次检查：函数名拼写是否一致、定义的文件有没有加入工程、参数类型是否匹配、C 和 C++ 混编时头文件是否加了 <code class="inline-code">extern "C"</code>。</p><p>只写了声明没写函数体，也会报这个错。</p></div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">Permission denied / cannot open output file<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div><p>上一次生成的 exe 还在运行，文件被占用，新文件写不进去。关掉那个控制台窗口，或在任务管理器里结束对应进程，再编译。</p><p>杀毒软件实时扫描偶尔也会短暂锁定 exe，稍等几秒重试。</p></div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">程序能编译，但运行结果不对<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>这是逻辑问题，不是编译问题。用断点调试：在可疑位置设断点，按 F5 运行，逐行看变量变化。步骤见<a href="tutorial.html#debug">调试教程</a>。</div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">报错里全是英文，看不懂<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>GCC 的原始输出就是英文。抓住三个关键词够用了：<code class="inline-code">error</code> 是错误、<code class="inline-code">warning</code> 是警告、<code class="inline-code">note</code> 是补充说明。把第一条 error 的英文原句复制去搜索，基本都能找到同款问题。</div></div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 其它 -->
+<section class="sec sec--alt" id="other">
+	<div class="wrap">
+		<div class="sec-head reveal">
+			<span class="eyebrow">其它</span>
+			<h2 class="h2">版本与平台</h2>
+		</div>
+		<div class="faq reveal">
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">支持 Linux 或 macOS 吗？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>不支持。5.11 和 6.3 都只有 Windows 版本。Linux 用 GCC 加任意编辑器即可，macOS 用 Xcode 或 VS Code 加 Clang。</div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">有手机版吗？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>没有。Dev-C++ 是 Windows 桌面程序，安卓和 iOS 上都装不了。</div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">以后还会更新吗？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>5.11 在 2016 年停止更新，6.3 在 2021 年停止更新。目前没有新的官方版本，但现有版本在 Windows 10 / 11 上仍能正常使用。</div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">能写 C++20 的代码吗？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>5.11 不行，它的 GCC 4.9.2 只到 C++11。6.3 的 GCC 9.2 可以用 <code class="inline-code">-std=c++2a</code> 编译部分 C++20 特性，但支持不完整。要完整支持得换编译器或换 IDE。</div></div>
+			</div>
+			<div class="faq__item">
+				<button type="button" class="faq__q" aria-expanded="false">卸载后设置还在吗？<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+				<div class="faq__a"><div>卸载时会询问是否保留个人配置。想彻底清干净就选不保留，再把安装目录残留的文件夹删掉。</div></div>
+			</div>
+		</div>
+
+		<div class="note note--blue mt-8 reveal">
+			<svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+			<div>上面没覆盖到你的问题？把编译日志里第一条 error 的完整英文原句记下来，对照<a href="tutorial.html">教程</a>检查路径、文件名后缀和 C++ 标准设置，这三项能解决大部分新手问题。</div>
+		</div>
+	</div>
+</section>
+
+<section class="sec">
+	<div class="wrap">
+		<div class="cta reveal">
+			<h2>准备开始写代码</h2>
+			<p>下载安装包，跟着教程走一遍，十分钟内能跑出第一个程序。</p>
+			<div class="hero__actions actions--flush">
+				<a class="btn btn--dark btn--lg" href="download.html">下载 Dev-C++</a>
+				<a class="btn btn--ghost btn--lg" href="tutorial.html">打开教程</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer class="footer">
+	<div class="wrap">
+		<div class="footer__grid">
+			<div>
+				<div class="footer__brand"><img src="assets/logo.svg" alt="">Dev-C++ 中文站</div>
+				<p class="footer__desc">整理 Dev-C++ 的下载地址、安装步骤和使用方法。内容以官方文档和实际安装结果为准，不吹不黑。</p>
+			</div>
+			<div>
+				<h4>页面导航</h4>
+				<ul>
+					<li><a href="index.html">首页</a></li>
+					<li><a href="download.html">下载安装</a></li>
+					<li><a href="features.html">功能说明</a></li>
+					<li><a href="tutorial.html">使用教程</a></li>
+					<li><a href="faq.html">常见问题</a></li>
+				</ul>
+			</div>
+			<div>
+				<h4>软件信息</h4>
+				<ul>
+					<li><span>版本：5.11 / 6.3</span></li>
+					<li><span>体积：48.1MB / 70.7MB</span></li>
+					<li><span>系统：Windows</span></li>
+					<li><span>语言：简体中文</span></li>
+					<li><span>协议：GPL v2</span></li>
+				</ul>
+			</div>
+			<div>
+				<h4>本页分类</h4>
+				<ul>
+					<li><a href="#install">安装相关</a></li>
+					<li><a href="#use">使用相关</a></li>
+					<li><a href="#compile">编译报错</a></li>
+					<li><a href="#other">版本与平台</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer__bottom">
+			<span>© 2026 Dev-C++ 中文站 · 最后更新：2026-11-11</span>
+			<span>本站为学习与下载指引站点，与 Dev-C++ 开发团队无隶属关系。Dev-C++ 名称归其各自权利人所有。</span>
+		</div>
+	</div>
+</footer>
+
+<button type="button" class="to-top" aria-label="返回顶部">
+	<svg class="ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

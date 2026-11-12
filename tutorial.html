@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dev-C++ 使用教程：中文设置、新建源文件、编译运行、断点调试</title>
+<meta name="description" content="Dev-C++ 完整使用教程：设置简体中文、新建源文件、保存、F11 编译运行、多文件工程、开启 C++11、GDB 断点调试、字体配色和快捷键设置。">
+
+<meta name="theme-color" content="#1f6feb">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dev-C++ 中文站">
+<meta property="og:title" content="Dev-C++ 使用教程：中文设置、新建源文件、编译运行、断点调试">
+<meta property="og:description" content="Dev-C++ 完整使用教程：设置简体中文、新建源文件、保存、F11 编译运行、多文件工程、开启 C++11、GDB 断点调试、字体配色和快捷键设置。">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add("js");</script>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+	<div class="wrap topbar__inner">
+		<a class="brand" href="index.html"><img src="assets/logo.svg" alt="Dev-C++">Dev-C++ <span>中文站</span></a>
+		<nav class="nav" aria-label="主导航">
+			<a href="index.html">首页</a>
+			<a href="download.html">下载安装</a>
+			<a href="features.html">功能说明</a>
+			<a class="is-active" href="tutorial.html">使用教程</a>
+			<a href="faq.html">常见问题</a>
+		</nav>
+		<div class="topbar__right">
+			<a class="btn btn--pri btn--sm" href="download.html">免费下载</a>
+			<button type="button" class="burger" aria-label="打开菜单" aria-expanded="false"><span></span></button>
+		</div>
+	</div>
+</header>
+<nav class="mobnav" aria-label="移动端导航">
+	<a href="index.html">首页</a>
+	<a href="download.html">下载安装</a>
+	<a href="features.html">功能说明</a>
+	<a href="tutorial.html">使用教程</a>
+	<a href="faq.html">常见问题</a>
+	<a class="btn btn--pri" href="download.html">免费下载</a>
+</nav>
+
+<section class="pagehead">
+	<div class="wrap">
+		<div class="crumb"><a href="index.html">首页</a> / 使用教程</div>
+		<h1>Dev-C++ 使用教程</h1>
+		<p class="lead">从装好到能写、能编译、能调试的完整流程。每一步都写了会看到什么、点哪里。</p>
+	</div>
+</section>
+
+<section class="sec sec--top">
+	<div class="wrap doc">
+		<aside class="toc">
+			<h4>本页目录</h4>
+			<a href="#prepare">安装与首次启动</a>
+			<a href="#language">设置简体中文</a>
+			<a href="#first-program">第一个程序</a>
+			<a href="#project">多文件工程</a>
+			<a href="#cpp11">开启 C++11 / C++17</a>
+			<a href="#debug">断点调试</a>
+			<a href="#settings">字体、配色和快捷键</a>
+			<a href="#uninstall">卸载与配置备份</a>
+		</aside>
+
+		<div class="doc__body">
+			<section id="prepare">
+				<h2>安装与首次启动</h2>
+				<p>安装包在<a href="download.html">下载安装</a>页，5.11 和 6.3 任选一个。安装过程中只有三个地方需要注意：</p>
+				<ul>
+					<li>安装语言只能选 <b>English</b>，装完才能切中文</li>
+					<li>组件选 <b>Full</b>，不要取消勾选</li>
+					<li>安装路径不带中文、不带空格，不要装进 C 盘</li>
+				</ul>
+				<p>装完点 Finish 启动，第一次打开会出现语言选择和主题设置，按下一节操作。</p>
+			</section>
+
+			<section id="language">
+				<h2>设置简体中文</h2>
+				<h3>首次启动时设置</h3>
+				<ol>
+					<li>启动后弹出语言选择窗口，下拉框里选 <b>Chinese (Simplified)</b></li>
+					<li>点 OK，进入字体和配色设置，保持默认</li>
+					<li>再点 OK，界面就变成中文了</li>
+				</ol>
+
+				<h3>错过了怎么办</h3>
+				<p>菜单“工具 → 环境选项”，找到 Language 下拉框，选 <b>Chinese (Simplified)</b>，点确定，重启 Dev-C++ 生效。</p>
+
+				<div class="note">
+					<svg class="ic" viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+					<div>编译时的报错信息有一部分仍是英文。这是 GCC 输出，属正常现象，不是没汉化成功。</div>
+				</div>
+			</section>
+
+			<section id="first-program">
+				<h2>第一个程序</h2>
+				<p>Dev-C++ 支持单个源文件直接编译，写练习和刷题不用建工程。下面这套流程走完，你就有第一个能运行的 exe 了。</p>
+
+				<h3>1）新建源文件</h3>
+				<p>菜单“文件 → 新建 → 源代码”，或按 <span class="kbd">Ctrl</span> + <span class="kbd">N</span>。编辑区出现一个空白标签页，默认叫“未命名1”。</p>
+
+				<h3>2）写代码</h3>
+				<p>C 语言版本：</p>
+				<div class="codeblock"><pre><span class="c-com">#include &lt;stdio.h&gt;</span>
+<span class="c-com">#include &lt;stdlib.h&gt;</span>
+
+<span class="c-key">int</span> main() {
+    printf(<span class="c-str">"Hello, Dev-C++!\n"</span>);
+    system(<span class="c-str">"pause"</span>);
+    <span class="c-key">return</span> 0;
+}</pre></div>
+				<p>C++ 版本：</p>
+				<div class="codeblock"><pre><span class="c-com">#include &lt;iostream&gt;</span>
+<span class="c-key">using</span> <span class="c-key">namespace</span> std;
+
+<span class="c-key">int</span> main() {
+    cout &lt;&lt; <span class="c-str">"Hello, Dev-C++!"</span> &lt;&lt; endl;
+    <span class="c-key">return</span> 0;
+}</pre></div>
+
+				<h3>3）保存成 .c 或 .cpp</h3>
+				<p>按 <span class="kbd">Ctrl</span> + <span class="kbd">S</span>，选一个纯英文路径，比如 <code class="inline-code">D:\code</code>。文件名后缀决定编译器按什么语言处理：</p>
+				<ul>
+					<li><code class="inline-code">hello.c</code>：按 C 语言编译，<code class="inline-code">#include &lt;iostream&gt;</code> 会报错</li>
+					<li><code class="inline-code">hello.cpp</code>：按 C++ 编译，两种代码都能过</li>
+				</ul>
+				<p>保存时如果文件名没写后缀，Dev-C++ 可能自动补成 .cpp，看清再确认。</p>
+
+				<h3>4）编译运行</h3>
+				<p>按 <span class="kbd">F11</span>，或菜单“运行 → 编译运行”。下方日志出现这样的内容就是成功了：</p>
+				<div class="codeblock"><pre>编译成功。0 个错误，0 个警告</pre></div>
+				<p>随后弹出一个黑色控制台窗口，显示 Hello, Dev-C++!，按任意键关闭。</p>
+
+				<h3>5）找到生成的 exe</h3>
+				<p>打开源文件所在目录，会看到同名的 exe。双击也能运行，但如果程序里没有暂停语句，窗口会一闪而过。</p>
+
+				<div class="note note--blue">
+					<svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+					<div><b>关于一闪而过：</b>F11 编译运行时，Dev-C++ 会自动帮你暂停，所以看得到输出。单独双击 exe 时不会暂停，程序执行完窗口就关了，这是正常行为，不是程序出错。</div>
+				</div>
+			</section>
+
+			<section id="project">
+				<h2>多文件工程</h2>
+				<p>代码分成多个 .c / .cpp 文件互相调用时，才需要建工程。单个文件跳过这一节。</p>
+				<ol>
+					<li>菜单“文件 → 新建 → 项目”，选 <b>Console Application</b>，语言选 C 或 C++</li>
+					<li>填工程名，选保存目录，点确定</li>
+					<li>工程建好后，右键工程名 → “添加”，把其它源文件加进来</li>
+					<li>按 <span class="kbd">F11</span> 编译整个工程，所有文件一起参与编译链接</li>
+				</ol>
+				<p>工程文件的扩展名是 .dev。换电脑时把整个工程文件夹拷走，打开 .dev 就能继续。</p>
+
+				<h3>头文件和源文件分开写</h3>
+				<p>多个文件共用的函数声明放在 .h 里，用 <code class="inline-code">#include "xxx.h"</code> 引入。注意引号用于自己写的头文件，尖括号用于标准库。</p>
+			</section>
+
+			<section id="cpp11">
+				<h2>开启 C++11 / C++17</h2>
+				<h3>5.11 开启 C++11</h3>
+				<ol>
+					<li>菜单“工具 → 编译选项”</li>
+					<li>切到“设置”标签页</li>
+					<li>在“代码生成/优化”里找到语言标准，勾选 C++11 对应的选项</li>
+					<li>点确定保存</li>
+				</ol>
+				<p>设置后 <code class="inline-code">auto</code>、范围 for、<code class="inline-code">nullptr</code>、<code class="inline-code">to_string</code> 这些就能用了。改完点确定，再按 <span class="kbd">F11</span> 重新编译才会生效。</p>
+
+				<h3>6.3 用 C++17</h3>
+				<p>6.3 自带 GCC 9.2，编译选项里直接选 <code class="inline-code">-std=c++17</code> 即可。也可以手动在“编译时加入以下命令”里填 <code class="inline-code">-std=c++17</code>。</p>
+
+				<h3>确认标准是否生效</h3>
+				<div class="codeblock"><pre><span class="c-com">#include &lt;iostream&gt;</span>
+<span class="c-key">int</span> main() {
+    std::cout &lt;&lt; __cplusplus &lt;&lt; std::endl;
+    <span class="c-key">return</span> 0;
+}</pre></div>
+				<p>输出 201103 表示 C++11，201703 表示 C++17，199711 表示还是 C++98。</p>
+
+				<div class="note">
+					<svg class="ic" viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+					<div>用 5.11 的 GCC 4.9.2 编译 C++17 代码会报一堆语法错误，这不是代码写错，是编译器版本不够。换 6.3 或升级 MinGW。</div>
+				</div>
+			</section>
+
+			<section id="debug">
+				<h2>断点调试</h2>
+				<p>调试解决的是“代码能编译，但结果不对”的问题。用一段求和的代码演示。</p>
+				<div class="codeblock"><pre><span class="c-com">#include &lt;stdio.h&gt;</span>
+
+<span class="c-key">int</span> main() {
+    <span class="c-key">int</span> sum = 0;
+    <span class="c-key">for</span> (<span class="c-key">int</span> i = 1; i &lt;= 100; i++) {
+        sum += i;
+    }
+    printf(<span class="c-str">"sum = %d\n"</span>, sum);
+    <span class="c-key">return</span> 0;
+}</pre></div>
+
+				<h3>1）设断点</h3>
+				<p>在 <code class="inline-code">printf</code> 那一行的行号左侧点一下，出现红色圆点即设置成功。再点一下取消。</p>
+
+				<h3>2）开始调试</h3>
+				<p>按 <span class="kbd">F5</span>，或菜单“运行 → 调试”。程序开始运行，到断点处停住，当前行会高亮。</p>
+
+				<h3>3）看变量</h3>
+				<p>底部“调试”面板的左侧列出局部变量，能看到 <code class="inline-code">sum</code> 和 <code class="inline-code">i</code> 的当前值。想看表达式就点“添加监视”，输入 <code class="inline-code">sum / 100.0</code> 这类式子。</p>
+
+				<h3>4）单步执行</h3>
+				<ul>
+					<li><b>下一步</b>：执行当前行，遇到函数调用不进去</li>
+					<li><b>单步进入</b>：进入函数内部逐行执行</li>
+					<li><b>运行到光标</b>：直接跑到光标所在行</li>
+				</ul>
+
+				<h3>5）结束调试</h3>
+				<p>点“结束调试”或按 <span class="kbd">Ctrl</span> + <span class="kbd">Alt</span> + <span class="kbd">F2</span>。程序会终止，正常关闭调试不会影响源文件。</p>
+
+				<div class="note note--blue">
+					<svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+					<div><b>断点不生效：</b>先确认编译选项里有 <code class="inline-code">-g</code>，再确认断点所在的行是可执行语句（空行、注释行、变量声明行有时停不住）。</div>
+				</div>
+			</section>
+
+			<section id="settings">
+				<h2>字体、配色和快捷键</h2>
+				<h3>改字体和字号</h3>
+				<p>“工具 → 编辑器选项 → 显示”，选字体和大小。中文注释显示成方块时，换成“微软雅黑”或“Consolas + 微软雅黑”的组合。</p>
+
+				<h3>改语法配色</h3>
+				<p>“工具 → 编辑器选项 → 语法”，左边选元素（关键字、字符串、注释等），右边改颜色和粗体。改完点确定立即生效。</p>
+
+				<h3>改快捷键</h3>
+				<p>“工具 → 快捷键”，找到对应命令，点“修改”，按下新组合键。冲突时它会提示已被占用。</p>
+
+				<h3>常用快捷键</h3>
+				<div class="table-wrap">
+					<table>
+						<tbody><tr><th scope="col">操作</th><th scope="col">快捷键</th><th scope="col">操作</th><th scope="col">快捷键</th></tr>
+							<tr><td>新建源文件</td><td><span class="kbd">Ctrl</span> + <span class="kbd">N</span></td><td>编译</td><td><span class="kbd">F9</span></td></tr>
+							<tr><td>打开</td><td><span class="kbd">Ctrl</span> + <span class="kbd">O</span></td><td>运行</td><td><span class="kbd">F10</span></td></tr>
+							<tr><td>保存</td><td><span class="kbd">Ctrl</span> + <span class="kbd">S</span></td><td>编译运行</td><td><span class="kbd">F11</span></td></tr>
+							<tr><td>全部保存</td><td><span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">S</span></td><td>调试</td><td><span class="kbd">F5</span></td></tr>
+							<tr><td>查找</td><td><span class="kbd">Ctrl</span> + <span class="kbd">F</span></td><td>代码补全</td><td><span class="kbd">Ctrl</span> + <span class="kbd">Space</span></td></tr>
+							<tr><td>替换</td><td><span class="kbd">Ctrl</span> + <span class="kbd">R</span></td><td>撤销 / 重做</td><td><span class="kbd">Ctrl</span> + <span class="kbd">Z</span> / <span class="kbd">Ctrl</span> + <span class="kbd">Y</span></td></tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<section id="uninstall">
+				<h2>卸载与配置备份</h2>
+				<h3>卸载</h3>
+				<p>控制面板 → 程序和功能 → 找到 Dev-C++ → 卸载。卸载程序会问是否保留个人配置，想彻底清干净就选不保留。</p>
+
+				<h3>备份配置</h3>
+				<p>字体、配色、快捷键这些设置存在安装目录的配置文件里。换电脑前把整个安装目录压缩拷走，解压到同版本上即可复用。</p>
+
+				<h3>便携版（仅 6.3）</h3>
+				<p>下载 7z 便携包，解压到任意目录，运行 devcpp.exe 就能用，不写注册表。适合放 U 盘或学校机房。</p>
+			</section>
+		</div>
+	</div>
+</section>
+
+<section class="sec sec--alt">
+	<div class="wrap">
+		<div class="cta reveal">
+			<h2>还卡在某一步？</h2>
+			<p>常见报错、安装失败、中文乱码这些问题都整理在常见问题页。</p>
+			<div class="hero__actions actions--flush">
+				<a class="btn btn--dark btn--lg" href="faq.html">看常见问题</a>
+				<a class="btn btn--ghost btn--lg" href="download.html">回下载页</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer class="footer">
+	<div class="wrap">
+		<div class="footer__grid">
+			<div>
+				<div class="footer__brand"><img src="assets/logo.svg" alt="">Dev-C++ 中文站</div>
+				<p class="footer__desc">整理 Dev-C++ 的下载地址、安装步骤和使用方法。内容以官方文档和实际安装结果为准，不吹不黑。</p>
+			</div>
+			<div>
+				<h4>页面导航</h4>
+				<ul>
+					<li><a href="index.html">首页</a></li>
+					<li><a href="download.html">下载安装</a></li>
+					<li><a href="features.html">功能说明</a></li>
+					<li><a href="tutorial.html">使用教程</a></li>
+					<li><a href="faq.html">常见问题</a></li>
+				</ul>
+			</div>
+			<div>
+				<h4>软件信息</h4>
+				<ul>
+					<li><span>版本：5.11 / 6.3</span></li>
+					<li><span>体积：48.1MB / 70.7MB</span></li>
+					<li><span>系统：Windows</span></li>
+					<li><span>语言：简体中文</span></li>
+					<li><span>协议：GPL v2</span></li>
+				</ul>
+			</div>
+			<div>
+				<h4>相关页面</h4>
+				<ul>
+					<li><a href="tutorial.html#first-program">第一个程序</a></li>
+					<li><a href="tutorial.html#debug">断点调试</a></li>
+					<li><a href="tutorial.html#cpp11">开启 C++11</a></li>
+					<li><a href="faq.html#install">安装问题</a></li>
+					<li><a href="faq.html#compile">编译报错</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer__bottom">
+			<span>© 2026 Dev-C++ 中文站 · 最后更新：2026-11-11</span>
+			<span>本站为学习与下载指引站点，与 Dev-C++ 开发团队无隶属关系。Dev-C++ 名称归其各自权利人所有。</span>
+		</div>
+	</div>
+</footer>
+
+<button type="button" class="to-top" aria-label="返回顶部">
+	<svg class="ic" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
